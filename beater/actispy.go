@@ -1,8 +1,8 @@
 package beater
 
 type Actispy interface {
-	getProcessID() string
-	getProcessName() string
-	getWindowName() string
-	getUserName() string
+	getProcessID() (int, error)
+	getProcessName() (string, error)
+	getWindowName() (string, error)
+	getUserName() (string, error)
 }

@@ -37,23 +37,48 @@ func (bt *Actibeat) Run(b *beat.Beat) error {
 
 	bt.client = b.Publisher.Connect()
 	ticker := time.NewTicker(bt.config.Period)
-	counter := 1
 	for {
 		select {
 		case <-bt.done:
 			return nil
 		case <-ticker.C:
 		}
+		// Create spy.
+		// TODO Use appropriate SPY according to system architecture.
+		actispy, err := newActispyWin32()
+		if err != nil {
+			bt.HandleError(b, err)
+			continue
+		}
 
-		var actispy Actispy = new(ActispyWin32)
+		procid, err := actispy.getProcessID()
+		if err != nil {
+			bt.HandleError(b, err)
+			continue
+		}
+		procname, err := actispy.getProcessName()
+		if err != nil {
+			bt.HandleError(b, err)
+			continue
+		}
+		windowname, err := actispy.getWindowName()
+		if err != nil {
+			bt.HandleError(b, err)
+			continue
+		}
+		username, err := actispy.getUserName()
+		if err != nil {
+			bt.HandleError(b, err)
+			continue
+		}
 
 		event := common.MapStr{
 			"@timestamp": common.Time(time.Now()),
 			"type":       b.Name,
-			"procid":     actispy.getProcessID(),
-			"procname":   actispy.getProcessName(),
-			"windowname": actispy.getWindowName(),
-			"username":   actispy.getUserName(),
+			"procid":     procid,
+			"procname":   procname,
+			"windowname": windowname,
+			"username":   username,
 			"interval": common.MapStr{
 				"sec":    bt.config.Period.Seconds(),
 				"minute": bt.config.Period.Minutes(),
@@ -62,8 +87,17 @@ func (bt *Actibeat) Run(b *beat.Beat) error {
 		}
 		bt.client.PublishEvent(event)
 		logp.Info("Event sent")
-		counter++
 	}
+}
+
+func (bt *Actibeat) HandleError(b *beat.Beat, err error) {
+	event := common.MapStr{
+		"@timestamp": common.Time(time.Now()),
+		"type":       b.Name + "error",
+		"error":      err.Error(),
+	}
+	bt.client.PublishEvent(event)
+	logp.Info("Error Event sent")
 }
 
 func (bt *Actibeat) Stop() {
