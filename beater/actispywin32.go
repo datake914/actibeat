@@ -51,7 +51,7 @@ func (s *ActispyWin32) getProcessName() (processName string, err error) {
 		err = fmt.Errorf("OpenProcess fails with %v", e1)
 		return
 	}
-	var nameProc [256]byte
+	var nameProc [512]byte
 	ret, _, _ := getProcessImageFileName.Call(
 		uintptr(handle),
 		uintptr(unsafe.Pointer(&nameProc)),
