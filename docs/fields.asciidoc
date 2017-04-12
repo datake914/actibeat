@@ -46,7 +46,7 @@ Process id
 [float]
 === windowname
 
-type: keyword
+type: text
 
 required: True
 
@@ -61,6 +61,46 @@ type: keyword
 required: True
 
 User name
+
+
+[float]
+=== error
+
+type: text
+
+required: True
+
+Error message
+
+
+[float]
+=== interval.sec
+
+type: float
+
+required: True
+
+Interval second
+
+
+[float]
+=== interval.minute
+
+type: float
+
+required: True
+
+Interval minute
+
+
+[float]
+=== interval.hour
+
+type: float
+
+required: True
+
+Interval hour
 
 
 [[exported-fields-beat]]

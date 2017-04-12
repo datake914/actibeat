@@ -39,8 +39,25 @@
             }
           }
         },
+        "error": {
+          "norms": false,
+          "type": "text"
+        },
         "fields": {
           "properties": {}
+        },
+        "interval": {
+          "properties": {
+            "hour": {
+              "type": "float"
+            },
+            "minute": {
+              "type": "float"
+            },
+            "sec": {
+              "type": "float"
+            }
+          }
         },
         "meta": {
           "properties": {
@@ -91,8 +108,8 @@
           "type": "keyword"
         },
         "windowname": {
-          "ignore_above": 1024,
-          "type": "keyword"
+          "norms": false,
+          "type": "text"
         }
       }
     }

@@ -13,7 +13,7 @@
       description: >
         Process id
     - name: windowname
-      type: keyword
+      type: text
       required: true
       description: >
         Window name
@@ -22,3 +22,23 @@
       required: true
       description: >
         User name
+    - name: error
+      type: text
+      required: true
+      description: >
+        Error message
+    - name: interval.sec
+      type: float
+      required: true
+      description: >
+        Interval second
+    - name: interval.minute
+      type: float
+      required: true
+      description: >
+        Interval minute
+    - name: interval.hour
+      type: float
+      required: true
+      description: >
+        Interval hour

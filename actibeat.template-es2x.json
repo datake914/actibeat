@@ -45,8 +45,28 @@
             }
           }
         },
+        "error": {
+          "index": "analyzed",
+          "norms": {
+            "enabled": false
+          },
+          "type": "string"
+        },
         "fields": {
           "properties": {}
+        },
+        "interval": {
+          "properties": {
+            "hour": {
+              "type": "float"
+            },
+            "minute": {
+              "type": "float"
+            },
+            "sec": {
+              "type": "float"
+            }
+          }
         },
         "meta": {
           "properties": {
@@ -107,8 +127,10 @@
           "type": "string"
         },
         "windowname": {
-          "ignore_above": 1024,
-          "index": "not_analyzed",
+          "index": "analyzed",
+          "norms": {
+            "enabled": false
+          },
           "type": "string"
         }
       }
