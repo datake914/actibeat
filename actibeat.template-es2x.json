@@ -45,9 +45,6 @@
             }
           }
         },
-        "counter": {
-          "type": "long"
-        },
         "fields": {
           "properties": {}
         },
@@ -89,7 +86,27 @@
             }
           }
         },
+        "procid": {
+          "ignore_above": 1024,
+          "index": "not_analyzed",
+          "type": "string"
+        },
+        "procname": {
+          "ignore_above": 1024,
+          "index": "not_analyzed",
+          "type": "string"
+        },
         "tags": {
+          "ignore_above": 1024,
+          "index": "not_analyzed",
+          "type": "string"
+        },
+        "username": {
+          "ignore_above": 1024,
+          "index": "not_analyzed",
+          "type": "string"
+        },
+        "windowname": {
           "ignore_above": 1024,
           "index": "not_analyzed",
           "type": "string"

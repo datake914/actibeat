@@ -2,8 +2,23 @@
   title: actibeat
   description:
   fields:
-    - name: counter
-      type: long
+    - name: procid
+      type: keyword
       required: true
       description: >
-        PLEASE UPDATE DOCUMENTATION
+        Process id
+    - name: procname
+      type: keyword
+      required: true
+      description: >
+        Process id
+    - name: windowname
+      type: keyword
+      required: true
+      description: >
+        Window name
+    - name: username
+      type: keyword
+      required: true
+      description: >
+        User name

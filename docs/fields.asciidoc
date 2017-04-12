@@ -24,13 +24,43 @@ None
 
 
 [float]
-=== counter
+=== procid
 
-type: long
+type: keyword
 
 required: True
 
-PLEASE UPDATE DOCUMENTATION
+Process id
+
+
+[float]
+=== procname
+
+type: keyword
+
+required: True
+
+Process id
+
+
+[float]
+=== windowname
+
+type: keyword
+
+required: True
+
+Window name
+
+
+[float]
+=== username
+
+type: keyword
+
+required: True
+
+User name
 
 
 [[exported-fields-beat]]

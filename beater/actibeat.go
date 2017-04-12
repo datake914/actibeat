@@ -45,10 +45,20 @@ func (bt *Actibeat) Run(b *beat.Beat) error {
 		case <-ticker.C:
 		}
 
+		var actispy Actispy = new(ActispyWin32)
+
 		event := common.MapStr{
 			"@timestamp": common.Time(time.Now()),
 			"type":       b.Name,
-			"counter":    counter,
+			"procid":     actispy.getProcessID(),
+			"procname":   actispy.getProcessName(),
+			"windowname": actispy.getWindowName(),
+			"username":   actispy.getUserName(),
+			"interval": common.MapStr{
+				"sec":    bt.config.Period.Seconds(),
+				"minute": bt.config.Period.Minutes(),
+				"hour":   bt.config.Period.Hours(),
+			},
 		}
 		bt.client.PublishEvent(event)
 		logp.Info("Event sent")
