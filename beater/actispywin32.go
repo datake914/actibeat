@@ -65,7 +65,6 @@ func (s *ActispyWin32) getProcessName() (processName string, err error) {
 }
 
 func (s *ActispyWin32) getWindowName() (windowName string, err error) {
-	fmt.Println(s.hwnd)
 	n := make([]uint16, 512)
 	p := &n[0]
 	r0, _, e1 := syscall.Syscall(getWindowText.Addr(), 3, uintptr(s.hwnd), uintptr(unsafe.Pointer(p)), uintptr(len(n)))
