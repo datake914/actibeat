@@ -23,8 +23,8 @@
       description: >
         User name
     - name: error
-      type: text
-      required: true
+      type: keyword
+      required: false
       description: >
         Error message
     - name: interval.sec

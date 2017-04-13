@@ -66,9 +66,9 @@ User name
 [float]
 === error
 
-type: text
+type: keyword
 
-required: True
+required: False
 
 Error message
 
