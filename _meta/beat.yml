@@ -4,4 +4,4 @@
 
 actibeat:
   # Defines how often an event is sent to the output
-  period: 5s
+  period: 10s
