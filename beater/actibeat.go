@@ -58,7 +58,7 @@ func (bt *Actibeat) Run(b *beat.Beat) error {
 		}
 		procname, err := actispy.getProcessName()
 		if err != nil {
-			bt.HandleError(b, err)
+			//bt.HandleError(b, err)
 			continue
 		}
 		windowname, err := actispy.getWindowName()
